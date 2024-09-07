@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Resume Builder Hackathon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="landing-page">
+    <div class="overlay">
+      <div class="content">
+        <h1>Interactive Resume Builder Hackathon</h1>
+        <p>Click 'Get Started' to begin building your interactive resume!</p>
+        <a href="#" class="btn get-started-btn" id="get-started-btn">Get Started</a>
+        <div class="dropdown-menu" id="options-section">
+          <a href="Static Resume Builder/index.html" class="dropdown-btn static-btn">Static Resume Builder</a>
+          <a href="Dynamic Resume Builder/index.html" class="dropdown-btn dynamic-btn">Dynamic Resume Builder</a>
+          <a href="Editable Resume Builder/index.html" class="dropdown-btn editable-btn">Editable Resume Builder</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const getStartedBtn = document.getElementById('get-started-btn');
+    const optionsSection = document.getElementById('options-section');
+
+    getStartedBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      optionsSection.classList.toggle('show');
+      getStartedBtn.style.display = 'none'; // Hide the Get Started button after click
+    });
+  </script>
+</body>
+</html>

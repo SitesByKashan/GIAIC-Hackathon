@@ -1,11 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Static Resume Builder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Resume</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+  <nav class="navbar">
+    <ul>
+      <li><a href="#personal-info">Personal Info</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <div class="resume">
+    <section id="personal-info">
+      <h1>John Doe</h1>
+      <img src="images/profile.jpeg" alt="Profile Picture" class="profile-pic">
+      <p>Email: john.doe@example.com</p>
+      <p>Phone: (123) 456-7890</p>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li>BS in Computer Science, University X, 2022</li>
+        <li>MS in Software Engineering, University Y, 2024</li>
+      </ul>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>HTML & CSS</li>
+        <li>React & Next.js</li>
+      </ul>
+    </section>
+    <section id="experience">
+      <h2>Work Experience</h2>
+      <ul>
+        <li>Software Developer at Company A (2023-present)</li>
+        <li>Intern at Company B (2022-2023)</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="script.ts"></script>
 </body>
 </html>
