@@ -122,6 +122,9 @@ body {
 .editable-btn {
   background-color: rgba(90, 190, 120, 1);
 }
+.unique-btn {
+  background-color: rgb(66, 121, 231);
+}
 
 /* Show the Dropdown with Transition */
 .dropdown-menu.show {
