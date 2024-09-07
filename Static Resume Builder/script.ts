@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const navbarLinks = document.querySelectorAll('.navbar a');
-    const sections = document.querySelectorAll('section');
+    const navbarLinks = document.querySelectorAll<HTMLAnchorElement>('.navbar a');
+    const sections = document.querySelectorAll<HTMLElement>('section');
+    const navbarHeight = document.querySelector<HTMLElement>('.navbar')?.offsetHeight || 0;
   
     function updateActiveLinkAndSection() {
       let index = sections.length;
   
-      while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+      while (--index && window.scrollY + navbarHeight < sections[index].offsetTop) {}
   
       // Remove 'active' class from all links
       navbarLinks.forEach((link) => link.classList.remove('active'));
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       sections[index].classList.add('highlight');
     }
   
-    // Call the function to set the initial active link and section
+    // Initial call to highlight the current section
     updateActiveLinkAndSection();
   
     // Update the active link and section on scroll
@@ -26,24 +27,23 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Smooth scrolling and highlighting when a link is clicked
     navbarLinks.forEach((link) => {
-      link.addEventListener('click', (event) => {
+      link.addEventListener('click', (event: MouseEvent) => {
         event.preventDefault();
         const targetId = link.getAttribute('href')?.substring(1);
         const targetSection = document.getElementById(targetId || '');
         if (targetSection) {
           window.scrollTo({
-            top: targetSection.offsetTop - 60, // Adjusted for fixed navbar
+            top: targetSection.offsetTop - navbarHeight, 
             behavior: 'smooth',
           });
   
           // Use a timeout to allow scroll to complete before highlighting
           setTimeout(() => {
-            // Ensure the clicked link and target section are highlighted
             navbarLinks.forEach((navLink) => navLink.classList.remove('active'));
             link.classList.add('active');
             sections.forEach((section) => section.classList.remove('highlight'));
             targetSection.classList.add('highlight');
-          }, 500); // Adjust the timeout duration if needed
+          }, 500); 
         }
       });
     });

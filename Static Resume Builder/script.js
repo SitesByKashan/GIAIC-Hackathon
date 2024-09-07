@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
+    var _a;
     var navbarLinks = document.querySelectorAll('.navbar a');
     var sections = document.querySelectorAll('section');
+    var navbarHeight = ((_a = document.querySelector('.navbar')) === null || _a === void 0 ? void 0 : _a.offsetHeight) || 0;
     function updateActiveLinkAndSection() {
         var index = sections.length;
-        while (--index && window.scrollY + 50 < sections[index].offsetTop) { }
+        while (--index && window.scrollY + navbarHeight < sections[index].offsetTop) { }
         // Remove 'active' class from all links
         navbarLinks.forEach(function (link) { return link.classList.remove('active'); });
         // Add 'active' class to the current link
@@ -13,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add 'highlight' class to the current section
         sections[index].classList.add('highlight');
     }
-    // Call the function to set the initial active link and section
+    // Initial call to highlight the current section
     updateActiveLinkAndSection();
     // Update the active link and section on scroll
     window.addEventListener('scroll', updateActiveLinkAndSection);
@@ -26,17 +28,16 @@ document.addEventListener('DOMContentLoaded', function () {
             var targetSection = document.getElementById(targetId || '');
             if (targetSection) {
                 window.scrollTo({
-                    top: targetSection.offsetTop - 60, // Adjusted for fixed navbar
+                    top: targetSection.offsetTop - navbarHeight,
                     behavior: 'smooth',
                 });
                 // Use a timeout to allow scroll to complete before highlighting
                 setTimeout(function () {
-                    // Ensure the clicked link and target section are highlighted
                     navbarLinks.forEach(function (navLink) { return navLink.classList.remove('active'); });
                     link.classList.add('active');
                     sections.forEach(function (section) { return section.classList.remove('highlight'); });
                     targetSection.classList.add('highlight');
-                }, 500); // Adjust the timeout duration if needed
+                }, 500);
             }
         });
     });

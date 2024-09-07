@@ -3,51 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Resume</title>
+  <title>Static Resume Builder</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <nav class="navbar">
     <ul>
       <li><a href="#personal-info">Personal Info</a></li>
+      <li><a href="#professional-summary">Professional Summary</a></li>
+      <li><a href="#competencies">Core Competencies</a></li>
+      <li><a href="#experience">Professional Experience</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
+      <li><a href="#languages">Languages</a></li>
     </ul>
   </nav>
 
   <div class="resume">
     <section id="personal-info">
-      <h1>John Doe</h1>
-      <img src="images/profile.jpeg" alt="Profile Picture" class="profile-pic">
-      <p>Email: john.doe@example.com</p>
-      <p>Phone: (123) 456-7890</p>
+      <div class="profile-container">
+        <img src="images/profile.jpg" alt="Profile Picture" class="profile-pic">
+        <div class="personal-details">
+          <h1>M. Kashan Malik Awan</h1>
+          <p>Email: <a href="mailto:mkashan2585@gmail.com">mkashan2585@gmail.com</a></p>
+          <p>Phone: <a href="tel:+923110206125">+92 311-0206125</a></p>
+          <p>Location: Mina Bazar PIB Colony Karachi, Pakistan</p>
+        </div>
+      </div>
     </section>
+
+    <section id="professional-summary">
+      <h2>Professional Summary</h2>
+      <p>Ambitious Full Stack Web Developer specializing in the MERN stack, with expertise in Generative AI, Chatbot Development, and Flutter Mobile App Development. Skilled in developing responsive web applications, API creation and integration, and managing databases. Proficient in delivering high-quality user experiences through effective collaboration with backend developers and leveraging the latest technologies. Seeking opportunities to contribute to a dynamic organization and further enhance my skills.</p>
+    </section>
+
+    <section id="competencies">
+      <h2>Core Competencies</h2>
+      <ul>
+        <li>MERN Stack Web Development (Premium)</li>
+        <li>Generative AI & Chatbot Development (SMIT)</li>
+        <li>Flutter Mobile App Development (Bano Qabil 2.0)</li>
+        <li>API Creation and Integration</li>
+        <li>Database Management</li>
+        <li>UI/UX Design Using Figma</li>
+        <li>Next.js Development</li>
+        <li>Tailwind CSS Integration</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <h3>Freelance Web Developer</h3>
+      <p>Platforms: Upwork, Fiverr, Freelancer, and Personal Platforms</p>
+      <ul>
+        <li>Developed and deployed multiple dynamic, responsive web applications using the MERN stack.</li>
+        <li>Created and integrated APIs to enhance application functionality and user experience.</li>
+        <li>Managed databases and collaborated effectively with backend developers to ensure seamless application performance.</li>
+        <li>Completed various private projects with a strong focus on quality and client satisfaction.</li>
+      </ul>
+      <p>Portfolio: <a href="https://sitesbykashan.netlify.app" target="_blank">sitesbykashan.netlify.app</a></p>
+    </section>
+
     <section id="education">
       <h2>Education</h2>
-      <ul>
-        <li>BS in Computer Science, University X, 2022</li>
-        <li>MS in Software Engineering, University Y, 2024</li>
-      </ul>
+      <p><strong>Army Public School (COD)</strong> - Matriculation, 2022</p>
+      <p><strong>Army Public College Faisal</strong> - Intermediate, 2024</p>
     </section>
-    <section id="skills">
-      <h2>Skills</h2>
+
+    <section id="languages">
+      <h2>Languages</h2>
       <ul>
-        <li>JavaScript</li>
-        <li>TypeScript</li>
-        <li>HTML & CSS</li>
-        <li>React & Next.js</li>
-      </ul>
-    </section>
-    <section id="experience">
-      <h2>Work Experience</h2>
-      <ul>
-        <li>Software Developer at Company A (2023-present)</li>
-        <li>Intern at Company B (2022-2023)</li>
+        <li>English: Proficient</li>
+        <li>Urdu: Native</li>
       </ul>
     </section>
   </div>
 
-  <script src="script.ts"></script>
+  <script src="script.js"></script>
 </body>
 </html>
