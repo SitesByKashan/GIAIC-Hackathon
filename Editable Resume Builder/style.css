@@ -1,0 +1,160 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 2.5em; 
+    font-weight: 700;
+    color: #007bff;
+    text-transform: uppercase;
+    letter-spacing: 1px; 
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  h1::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 60px;
+    height: 4px; 
+    background: linear-gradient(90deg, #007bff, #00c8ff);
+    transform: translateX(-50%);
+    border-radius: 5px;
+  }
+  
+  form {
+    max-width: 800px; 
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  form section {
+    margin-bottom: 20px;
+  }
+  
+  form h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #007bff;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  form input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  form button {
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-top: 10px;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  #resumeDisplay {
+    max-width: 800px; 
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  #resumeDisplay h2 {
+    color: #007bff;
+  }
+  
+  #resumeDisplay h3 {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+  }
+  
+  #resumeDisplay ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #resumeDisplay li {
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #resumeDisplay [contenteditable="true"] {
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  #resumeDisplay [contenteditable="true"]:focus {
+    background-color: #f0f8ff;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2em; 
+    }
+  
+    form {
+      padding: 15px; 
+    }
+  
+    form button {
+      padding: 10px 15px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.5em; 
+    }
+  
+    form {
+      padding: 10px; 
+    }
+  
+    form button {
+      padding: 10px 15px; 
+    }
+  
+    form input {
+      font-size: 0.9em; 
+    }
+  }
+  
