@@ -3,46 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const resumeContainer = document.getElementById('resumeContainer') as HTMLDivElement | null;
   const resumeDisplay = document.getElementById('resumeDisplay') as HTMLDivElement | null;
   const downloadBtn = document.getElementById('downloadBtn') as HTMLButtonElement | null;
+  const copyLinkBtn = document.getElementById('copyLinkBtn') as HTMLButtonElement | null;
+  const linkDisplay = document.getElementById('linkDisplay') as HTMLParagraphElement | null;
 
-  if (form && resumeContainer && resumeDisplay && downloadBtn) {
-    const addEducationBtn = document.getElementById('addEducation') as HTMLButtonElement | null;
-    const educationFields = document.getElementById('educationFields') as HTMLDivElement | null;
-
-    addEducationBtn?.addEventListener('click', () => {
-      const newEducationEntry = document.createElement('div');
-      newEducationEntry.className = 'education-entry';
-
-      newEducationEntry.innerHTML = `
-        <label for="degree">Degree:</label>
-        <input type="text" class="degree" required>
-        <label for="institution">Institution:</label>
-        <input type="text" class="institution" required>
-        <label for="year">Graduation Year:</label>
-        <input type="text" class="year" required>
-      `;
-
-      educationFields?.appendChild(newEducationEntry);
-    });
-
-    const addWorkExperienceBtn = document.getElementById('addWorkExperience') as HTMLButtonElement | null;
-    const workFields = document.getElementById('workFields') as HTMLDivElement | null;
-
-    addWorkExperienceBtn?.addEventListener('click', () => {
-      const newWorkEntry = document.createElement('div');
-      newWorkEntry.className = 'work-entry';
-
-      newWorkEntry.innerHTML = `
-        <label for="jobTitle">Job Title:</label>
-        <input type="text" class="jobTitle" required>
-        <label for="company">Company:</label>
-        <input type="text" class="company" required>
-        <label for="yearsWorked">Years Worked:</label>
-        <input type="text" class="yearsWorked" required>
-      `;
-
-      workFields?.appendChild(newWorkEntry);
-    });
-
+  if (form && resumeContainer && resumeDisplay && downloadBtn && copyLinkBtn && linkDisplay) {
     form.addEventListener('submit', (e: Event) => {
       e.preventDefault();
 
@@ -70,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       resumeDisplay.innerHTML = `
         <div class="resume" contenteditable="true">
-          <h2>${name}</h2>
+          <h2 style="color: #007bff">${name}</h2>
           <p>Email: ${email}</p>
           <p>Phone: ${phone}</p>
-          <h3>Education</h3>
+          <h3 style="color: #007bff">Education</h3>
           <ul>${educationList}</ul>
-          <h3>Work Experience</h3>
+          <h3 style="color: #007bff">Work Experience</h3>
           <ul>${workList}</ul>
-          <h3>Skills</h3>
+          <h3 style="color: #007bff">Skills</h3>
           <ul>${skills}</ul>
         </div>
       `;
@@ -85,6 +49,25 @@ document.addEventListener('DOMContentLoaded', () => {
       resumeContainer.style.display = 'block';
       form.style.display = 'none';  // Hide the form
       downloadBtn.style.display = 'inline-block';  // Show the download button
+      copyLinkBtn.style.display = 'inline-block';  // Show the copy link button
+
+      // Generate a unique URL based on the user's name
+      const uniqueUrl = `https://giaichackathon.vercel.app/Unique%20Path%20and%20Shareable%20Link/index.html?name=${encodeURIComponent(name)}`;
+      
+      // Show the unique URL
+      linkDisplay.textContent = `Shareable URL: ${uniqueUrl}`;
+      linkDisplay.style.display = 'block';
+
+      // Add copy link button functionality
+      copyLinkBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(uniqueUrl)
+          .then(() => {
+            alert('Link copied to clipboard!');
+          })
+          .catch(err => {
+            console.error('Failed to copy link: ', err);
+          });
+      });
     });
 
     downloadBtn.addEventListener('click', () => {
