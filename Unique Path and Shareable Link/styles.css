@@ -43,23 +43,19 @@ h1 span {
   -webkit-text-fill-color: transparent;
 }
 
-/* Form styling */
 form {
-  max-width: 100%; /* Ensure form does not exceed viewport width */
+  max-width: 800px;
   margin: 20px auto;
   background: linear-gradient(145deg, #ffffff, #f7f9fc);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-/* Form section styling */
 form section {
   margin-bottom: 25px;
 }
 
-/* Form header styling */
 form h2 {
   margin-top: 0;
   font-size: 1.6em;
@@ -81,7 +77,6 @@ form h2::after {
   border-radius: 5px;
 }
 
-/* Form labels and inputs */
 form label {
   display: block;
   margin-bottom: 6px;
@@ -97,10 +92,8 @@ form input {
   border-radius: 8px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
   font-size: 1em;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-/* Form buttons */
 form button {
   padding: 12px 30px;
   background-color: #007bff;
@@ -142,7 +135,7 @@ form button:hover {
 /* Resume content */
 #resumeDisplay h2 {
   font-size: 2em;
-  color: #333;
+  color: #007bff;
   margin-bottom: 10px;
 }
 
@@ -157,7 +150,15 @@ form button:hover {
   color: #007bff;
 }
 
-/* Buttons for download and copy link */
+/* Container for buttons */
+#buttonContainer {
+  display: flex;
+  flex-direction: column; /* Stacked vertically on mobile */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
 #downloadBtn, #copyLinkBtn {
   padding: 12px 25px;
   background-color: #007bff;
@@ -178,13 +179,14 @@ form button:hover {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-  form {
-    padding: 15px;
+@media (min-width: 769px) {
+  #buttonContainer {
+    flex-direction: row; /* Horizontally aligned on larger screens */
   }
 
-  form button {
-    font-size: 1em;
+  #downloadBtn, #copyLinkBtn {
+    width: auto; /* Let buttons take their natural width */
+    margin: 0 10px; /* Add some space between the buttons */
   }
 }
 
@@ -205,6 +207,10 @@ form button:hover {
 
   #resumeDisplay ul li {
     font-size: 0.9em;
+  }
+
+  #buttonContainer {
+    flex-direction: column; /* Stack buttons vertically on small screens */
   }
 }
 

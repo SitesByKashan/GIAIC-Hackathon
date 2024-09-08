@@ -199,7 +199,7 @@ function generateResume() {
 
   // Create and append education section
   const educationSection = `
-    <h3>Education</h3>
+    <h3 contenteditable="true">Education</h3>
     <ul>
       ${educationEntries.map(entry => `<li contenteditable="true">${entry.degree} from ${entry.institution} (${entry.year})</li>`).join('')}
     </ul>
@@ -208,7 +208,7 @@ function generateResume() {
 
   // Create and append work experience section
   const workExperienceSection = `
-    <h3>Work Experience</h3>
+    <h3 contenteditable="true">Work Experience</h3>
     <ul>
       ${workEntries.map(entry => `<li contenteditable="true">${entry.jobTitle} at ${entry.company} (${entry.yearsWorked})</li>`).join('')}
     </ul>
@@ -217,8 +217,14 @@ function generateResume() {
 
   // Create and append skills section
   const skillsSection = `
-    <h3>Skills</h3>
-    <p contenteditable="true">${skills.join(', ')}</p>
+     <div class="resume-section">
+                <h3 contenteditable="true">Skills</h3>
+                <ul>
+                    ${skills.map(skill => `
+                        <li contenteditable="true">${skill.trim()}</li>
+                    `).join('')}
+                </ul>
+            </div>
   `;
   resumeDisplay.innerHTML += skillsSection;
 }

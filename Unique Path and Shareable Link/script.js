@@ -122,7 +122,6 @@
 //     });
 //   }
 // });
-// Define interfaces for form sections
 // Select form and resume container elements
 var resumeForm = document.getElementById('resumeForm');
 var resumeContainer = document.getElementById('resumeContainer');
@@ -168,13 +167,13 @@ function generateResume() {
     var personalInfoSection = "\n    <h2 contenteditable=\"true\">".concat(name, "</h2>\n    <p contenteditable=\"true\"><strong>Email:</strong> ").concat(email, "</p>\n    <p contenteditable=\"true\"><strong>Phone:</strong> ").concat(phone, "</p>\n  ");
     resumeDisplay.innerHTML += personalInfoSection;
     // Create and append education section
-    var educationSection = "\n    <h3>Education</h3>\n    <ul>\n      ".concat(educationEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.degree, " from ").concat(entry.institution, " (").concat(entry.year, ")</li>"); }).join(''), "\n    </ul>\n  ");
+    var educationSection = "\n    <h3 contenteditable=\"true\">Education</h3>\n    <ul>\n      ".concat(educationEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.degree, " from ").concat(entry.institution, " (").concat(entry.year, ")</li>"); }).join(''), "\n    </ul>\n  ");
     resumeDisplay.innerHTML += educationSection;
     // Create and append work experience section
-    var workExperienceSection = "\n    <h3>Work Experience</h3>\n    <ul>\n      ".concat(workEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.jobTitle, " at ").concat(entry.company, " (").concat(entry.yearsWorked, ")</li>"); }).join(''), "\n    </ul>\n  ");
+    var workExperienceSection = "\n    <h3 contenteditable=\"true\">Work Experience</h3>\n    <ul>\n      ".concat(workEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.jobTitle, " at ").concat(entry.company, " (").concat(entry.yearsWorked, ")</li>"); }).join(''), "\n    </ul>\n  ");
     resumeDisplay.innerHTML += workExperienceSection;
     // Create and append skills section
-    var skillsSection = "\n    <h3>Skills</h3>\n    <p contenteditable=\"true\">".concat(skills.join(', '), "</p>\n  ");
+    var skillsSection = "\n     <div class=\"resume-section\">\n                <h3 contenteditable=\"true\">Skills</h3>\n                <ul>\n                    ".concat(skills.map(function (skill) { return "\n                        <li contenteditable=\"true\">".concat(skill.trim(), "</li>\n                    "); }).join(''), "\n                </ul>\n            </div>\n  ");
     resumeDisplay.innerHTML += skillsSection;
 }
 // Add new education entry dynamically
