@@ -131,7 +131,7 @@ downloadBtn.addEventListener('click', () => {
 copyLinkBtn.addEventListener('click', () => {
   const username = (document.getElementById('name') as HTMLInputElement).value;
   const uniqueUrl = `https://giaichackathon.vercel.app/Unique%20Path%20and%20Shareable%20Link/index.html?user=${encodeURIComponent(username)}`;
-  linkDisplay.textContent = `Shareable Link: ${uniqueUrl}`;
+  linkDisplay.innerHTML = `<h3>Shareable Link: </h3><a href="${uniqueUrl}" target="_blank">${uniqueUrl}</a>`;
   linkDisplay.style.display = 'block';
 
   // Copy to clipboard

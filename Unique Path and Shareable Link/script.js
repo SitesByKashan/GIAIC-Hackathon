@@ -77,7 +77,7 @@ downloadBtn.addEventListener('click', function () {
 copyLinkBtn.addEventListener('click', function () {
     var username = document.getElementById('name').value;
     var uniqueUrl = "https://giaichackathon.vercel.app/Unique%20Path%20and%20Shareable%20Link/index.html?user=".concat(encodeURIComponent(username));
-    linkDisplay.textContent = "Shareable Link: ".concat(uniqueUrl);
+    linkDisplay.innerHTML = "<h3>Shareable Link: </h3><a href=\"".concat(uniqueUrl, "\" target=\"_blank\">").concat(uniqueUrl, "</a>");
     linkDisplay.style.display = 'block';
     // Copy to clipboard
     navigator.clipboard.writeText(uniqueUrl)
