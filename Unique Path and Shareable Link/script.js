@@ -3,37 +3,9 @@
 //   const resumeContainer = document.getElementById('resumeContainer') as HTMLDivElement | null;
 //   const resumeDisplay = document.getElementById('resumeDisplay') as HTMLDivElement | null;
 //   const downloadBtn = document.getElementById('downloadBtn') as HTMLButtonElement | null;
-//   if (form && resumeContainer && resumeDisplay && downloadBtn) {
-//     const addEducationBtn = document.getElementById('addEducation') as HTMLButtonElement | null;
-//     const educationFields = document.getElementById('educationFields') as HTMLDivElement | null;
-//     addEducationBtn?.addEventListener('click', () => {
-//       const newEducationEntry = document.createElement('div');
-//       newEducationEntry.className = 'education-entry';
-//       newEducationEntry.innerHTML = `
-//         <label for="degree">Degree:</label>
-//         <input type="text" class="degree" required>
-//         <label for="institution">Institution:</label>
-//         <input type="text" class="institution" required>
-//         <label for="year">Graduation Year:</label>
-//         <input type="text" class="year" required>
-//       `;
-//       educationFields?.appendChild(newEducationEntry);
-//     });
-//     const addWorkExperienceBtn = document.getElementById('addWorkExperience') as HTMLButtonElement | null;
-//     const workFields = document.getElementById('workFields') as HTMLDivElement | null;
-//     addWorkExperienceBtn?.addEventListener('click', () => {
-//       const newWorkEntry = document.createElement('div');
-//       newWorkEntry.className = 'work-entry';
-//       newWorkEntry.innerHTML = `
-//         <label for="jobTitle">Job Title:</label>
-//         <input type="text" class="jobTitle" required>
-//         <label for="company">Company:</label>
-//         <input type="text" class="company" required>
-//         <label for="yearsWorked">Years Worked:</label>
-//         <input type="text" class="yearsWorked" required>
-//       `;
-//       workFields?.appendChild(newWorkEntry);
-//     });
+//   const copyLinkBtn = document.getElementById('copyLinkBtn') as HTMLButtonElement | null;
+//   const linkDisplay = document.getElementById('linkDisplay') as HTMLParagraphElement | null;
+//   if (form && resumeContainer && resumeDisplay && downloadBtn && copyLinkBtn && linkDisplay) {
 //     form.addEventListener('submit', (e: Event) => {
 //       e.preventDefault();
 //       const name = (document.getElementById('name') as HTMLInputElement).value;
@@ -56,20 +28,36 @@
 //       const skills = (document.getElementById('skills') as HTMLInputElement).value.split(',').map(skill => `<li>${skill.trim()}</li>`).join('');
 //       resumeDisplay.innerHTML = `
 //         <div class="resume" contenteditable="true">
-//           <h2>${name}</h2>
+//           <h2 style="color: #007bff">${name}</h2>
 //           <p>Email: ${email}</p>
 //           <p>Phone: ${phone}</p>
-//           <h3>Education</h3>
+//           <h3 style="color: #007bff">Education</h3>
 //           <ul>${educationList}</ul>
-//           <h3>Work Experience</h3>
+//           <h3 style="color: #007bff">Work Experience</h3>
 //           <ul>${workList}</ul>
-//           <h3>Skills</h3>
+//           <h3 style="color: #007bff">Skills</h3>
 //           <ul>${skills}</ul>
 //         </div>
 //       `;
 //       resumeContainer.style.display = 'block';
 //       form.style.display = 'none';  // Hide the form
 //       downloadBtn.style.display = 'inline-block';  // Show the download button
+//       copyLinkBtn.style.display = 'inline-block';  // Show the copy link button
+//       // Generate a unique URL based on the user's name
+//       const uniqueUrl = `https://giaichackathon.vercel.app/Unique%20Path%20and%20Shareable%20Link/index.html?name=${encodeURIComponent(name)}`;
+//       // Show the unique URL
+//       linkDisplay.textContent = `Shareable URL: ${uniqueUrl}`;
+//       linkDisplay.style.display = 'block';
+//       // Add copy link button functionality
+//       copyLinkBtn.addEventListener('click', () => {
+//         navigator.clipboard.writeText(uniqueUrl)
+//           .then(() => {
+//             alert('Link copied to clipboard!');
+//           })
+//           .catch(err => {
+//             console.error('Failed to copy link: ', err);
+//           });
+//       });
 //     });
 //     downloadBtn.addEventListener('click', () => {
 //       if (resumeDisplay) {
@@ -134,67 +122,95 @@
 //     });
 //   }
 // });
-document.addEventListener('DOMContentLoaded', function () {
-    var form = document.getElementById('resumeForm');
-    var resumeContainer = document.getElementById('resumeContainer');
-    var resumeDisplay = document.getElementById('resumeDisplay');
-    var downloadBtn = document.getElementById('downloadBtn');
-    var copyLinkBtn = document.getElementById('copyLinkBtn');
-    var linkDisplay = document.getElementById('linkDisplay');
-    if (form && resumeContainer && resumeDisplay && downloadBtn && copyLinkBtn && linkDisplay) {
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var educationEntries = document.querySelectorAll('.education-entry');
-            var educationList = Array.from(educationEntries).map(function (entry) {
-                var degree = entry.querySelector('.degree').value;
-                var institution = entry.querySelector('.institution').value;
-                var year = entry.querySelector('.year').value;
-                return "<li>".concat(degree, " from ").concat(institution, " (").concat(year, ")</li>");
-            }).join('');
-            var workEntries = document.querySelectorAll('.work-entry');
-            var workList = Array.from(workEntries).map(function (entry) {
-                var jobTitle = entry.querySelector('.jobTitle').value;
-                var company = entry.querySelector('.company').value;
-                var yearsWorked = entry.querySelector('.yearsWorked').value;
-                return "<li>".concat(jobTitle, " at ").concat(company, " (").concat(yearsWorked, ")</li>");
-            }).join('');
-            var skills = document.getElementById('skills').value.split(',').map(function (skill) { return "<li>".concat(skill.trim(), "</li>"); }).join('');
-            resumeDisplay.innerHTML = "\n        <div class=\"resume\" contenteditable=\"true\">\n          <h2 style=\"color: #007bff\">".concat(name, "</h2>\n          <p>Email: ").concat(email, "</p>\n          <p>Phone: ").concat(phone, "</p>\n          <h3 style=\"color: #007bff\">Education</h3>\n          <ul>").concat(educationList, "</ul>\n          <h3 style=\"color: #007bff\">Work Experience</h3>\n          <ul>").concat(workList, "</ul>\n          <h3 style=\"color: #007bff\">Skills</h3>\n          <ul>").concat(skills, "</ul>\n        </div>\n      ");
-            resumeContainer.style.display = 'block';
-            form.style.display = 'none'; // Hide the form
-            downloadBtn.style.display = 'inline-block'; // Show the download button
-            copyLinkBtn.style.display = 'inline-block'; // Show the copy link button
-            // Generate a unique URL based on the user's name
-            var uniqueUrl = "https://giaichackathon.vercel.app/Unique%20Path%20and%20Shareable%20Link/index.html?name=".concat(encodeURIComponent(name));
-            // Show the unique URL
-            linkDisplay.textContent = "Shareable URL: ".concat(uniqueUrl);
-            linkDisplay.style.display = 'block';
-            // Add copy link button functionality
-            copyLinkBtn.addEventListener('click', function () {
-                navigator.clipboard.writeText(uniqueUrl)
-                    .then(function () {
-                    alert('Link copied to clipboard!');
-                })
-                    .catch(function (err) {
-                    console.error('Failed to copy link: ', err);
-                });
-            });
-        });
-        downloadBtn.addEventListener('click', function () {
-            if (resumeDisplay) {
-                var name_1 = document.getElementById('name').value;
-                // Save original body content
-                var originalContent = document.body.innerHTML;
-                // Set print content
-                document.body.innerHTML = "\n          <html>\n            <head>\n              <title>".concat(name_1, "'s Resume</title>\n              <style>\n                body {\n                  font-family: Arial, sans-serif;\n                  margin: 0;\n                  padding: 0;\n                  box-sizing: border-box;\n                }\n                .resume {\n                  padding: 20px;\n                  max-width: 800px;\n                  margin: 20px auto;\n                  border: 1px solid #ccc;\n                  border-radius: 8px;\n                  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);\n                  background-color: #fff;\n                  color: #333;\n                }\n                h2 {\n                  font-size: 2em;\n                  margin-bottom: 10px;\n                  color: #007bff;\n                }\n                p {\n                  font-size: 1.2em;\n                  margin: 5px 0;\n                }\n                h3 {\n                  font-size: 1.5em;\n                  margin-top: 20px;\n                  color: #333;\n                }\n                ul {\n                  list-style: disc;\n                  margin-left: 20px;\n                }\n                li {\n                  font-size: 1.1em;\n                }\n              </style>\n            </head>\n            <body>\n              ").concat(resumeDisplay.innerHTML, "\n            </body>\n          </html>\n        ");
-                // Trigger print dialog
-                window.print();
-                // Restore original content
-                document.body.innerHTML = originalContent;
-            }
-        });
-    }
+// Define interfaces for form sections
+// Select form and resume container elements
+var resumeForm = document.getElementById('resumeForm');
+var resumeContainer = document.getElementById('resumeContainer');
+var resumeDisplay = document.getElementById('resumeDisplay');
+var downloadBtn = document.getElementById('downloadBtn');
+var copyLinkBtn = document.getElementById('copyLinkBtn');
+var linkDisplay = document.getElementById('linkDisplay');
+// Add event listener for form submission
+resumeForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    // Hide form after submission
+    resumeForm.style.display = 'none';
+    resumeContainer.style.display = 'block';
+    // Generate the resume
+    generateResume();
+    // Scroll to the resume section
+    resumeContainer.scrollIntoView({ behavior: 'smooth' });
+});
+// Function to generate the resume based on form input
+function generateResume() {
+    // Retrieve user inputs from form fields
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var phone = document.getElementById('phone').value;
+    var educationEntries = Array.from(document.getElementsByClassName('education-entry')).map(function (entry) {
+        return {
+            degree: entry.getElementsByClassName('degree')[0].value,
+            institution: entry.getElementsByClassName('institution')[0].value,
+            year: entry.getElementsByClassName('year')[0].value
+        };
+    });
+    var workEntries = Array.from(document.getElementsByClassName('work-entry')).map(function (entry) {
+        return {
+            jobTitle: entry.getElementsByClassName('jobTitle')[0].value,
+            company: entry.getElementsByClassName('company')[0].value,
+            yearsWorked: entry.getElementsByClassName('yearsWorked')[0].value
+        };
+    });
+    var skills = document.getElementById('skills').value.split(',');
+    // Clear the resume display before appending new content
+    resumeDisplay.innerHTML = '';
+    // Create and append personal information
+    var personalInfoSection = "\n    <h2 contenteditable=\"true\">".concat(name, "</h2>\n    <p contenteditable=\"true\"><strong>Email:</strong> ").concat(email, "</p>\n    <p contenteditable=\"true\"><strong>Phone:</strong> ").concat(phone, "</p>\n  ");
+    resumeDisplay.innerHTML += personalInfoSection;
+    // Create and append education section
+    var educationSection = "\n    <h3>Education</h3>\n    <ul>\n      ".concat(educationEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.degree, " from ").concat(entry.institution, " (").concat(entry.year, ")</li>"); }).join(''), "\n    </ul>\n  ");
+    resumeDisplay.innerHTML += educationSection;
+    // Create and append work experience section
+    var workExperienceSection = "\n    <h3>Work Experience</h3>\n    <ul>\n      ".concat(workEntries.map(function (entry) { return "<li contenteditable=\"true\">".concat(entry.jobTitle, " at ").concat(entry.company, " (").concat(entry.yearsWorked, ")</li>"); }).join(''), "\n    </ul>\n  ");
+    resumeDisplay.innerHTML += workExperienceSection;
+    // Create and append skills section
+    var skillsSection = "\n    <h3>Skills</h3>\n    <p contenteditable=\"true\">".concat(skills.join(', '), "</p>\n  ");
+    resumeDisplay.innerHTML += skillsSection;
+}
+// Add new education entry dynamically
+var addEducationBtn = document.getElementById('addEducation');
+addEducationBtn.addEventListener('click', function () {
+    var educationFields = document.getElementById('educationFields');
+    var newEntry = document.createElement('div');
+    newEntry.classList.add('education-entry');
+    newEntry.innerHTML = "\n    <label for=\"degree\">Degree:</label>\n    <input type=\"text\" class=\"degree\" required>\n    <label for=\"institution\">Institution:</label>\n    <input type=\"text\" class=\"institution\" required>\n    <label for=\"year\">Graduation Year:</label>\n    <input type=\"text\" class=\"year\" required>\n  ";
+    educationFields.appendChild(newEntry);
+});
+// Add new work experience entry dynamically
+var addWorkExperienceBtn = document.getElementById('addWorkExperience');
+addWorkExperienceBtn.addEventListener('click', function () {
+    var workFields = document.getElementById('workFields');
+    var newEntry = document.createElement('div');
+    newEntry.classList.add('work-entry');
+    newEntry.innerHTML = "\n    <label for=\"jobTitle\">Job Title:</label>\n    <input type=\"text\" class=\"jobTitle\" required>\n    <label for=\"company\">Company:</label>\n    <input type=\"text\" class=\"company\" required>\n    <label for=\"yearsWorked\">Years Worked:</label>\n    <input type=\"text\" class=\"yearsWorked\" required>\n  ";
+    workFields.appendChild(newEntry);
+});
+// Add event listener for download button to trigger print for PDF download
+downloadBtn.addEventListener('click', function () {
+    window.print(); // Use browser's print dialog, which includes PDF option
+});
+// Generate unique shareable link (just for example purposes)
+copyLinkBtn.addEventListener('click', function () {
+    var username = document.getElementById('name').value;
+    var uniqueUrl = "".concat(window.location.origin, "/UniquePathAndShareableLink/index.html?user=").concat(encodeURIComponent(username));
+    linkDisplay.textContent = "Shareable Link: ".concat(uniqueUrl);
+    linkDisplay.style.display = 'block';
+    // Copy to clipboard
+    navigator.clipboard.writeText(uniqueUrl)
+        .then(function () {
+        alert('Link copied to clipboard!');
+    })
+        .catch(function (err) {
+        console.error('Could not copy link: ', err);
+    });
 });

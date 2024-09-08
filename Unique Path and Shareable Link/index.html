@@ -8,6 +8,7 @@
 </head>
 <body>
   <h1><span>Unique Resume Builder</span></h1>
+  
   <!-- Form for capturing user input -->
   <form id="resumeForm">
     <section>
@@ -19,6 +20,7 @@
       <label for="phone">Phone:</label>
       <input type="tel" id="phone" required>
     </section>
+    
     <section>
       <h2>Education</h2>
       <div id="educationFields">
@@ -33,6 +35,7 @@
       </div>
       <button type="button" id="addEducation">Add Education</button>
     </section>
+    
     <section>
       <h2>Work Experience</h2>
       <div id="workFields">
@@ -47,6 +50,7 @@
       </div>
       <button type="button" id="addWorkExperience">Add Work Experience</button>
     </section>
+    
     <section>
       <h2>Skills</h2>
       <div id="skillsFields">
@@ -54,10 +58,11 @@
         <input type="text" id="skills" required>
       </div>
     </section>
+    
     <button type="submit">Generate Resume</button>
   </form>
 
- 
+  <!-- Resume display and action buttons -->
   <div id="resumeContainer" style="display: none;">
     <div id="resumeDisplay"></div>
     <div id="buttonContainer">
