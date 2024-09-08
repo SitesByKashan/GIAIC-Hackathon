@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <p>Phone: ${phone}</p>
           </div>
           <div class="resume-section">
-              <h3 contenteditable="true">Education</h3>
+              <h3>Education</h3>
               <ul>
                   ${educationData.map(item => `
                       <li>${item.degree}, ${item.institution} (${item.year})</li>
