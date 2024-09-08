@@ -266,7 +266,7 @@ form button:hover {
 
 /* CSS for print to hide buttons */
 @media print {
-  #resumeForm, #buttonContainer {
+  #resumeForm, #buttonContainer, #linkDisplay  {
     display: none;
   }
 
