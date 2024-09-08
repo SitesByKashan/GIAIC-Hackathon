@@ -1,17 +1,14 @@
-/* Ensure the body and html elements do not exceed the viewport width */
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-x: hidden; 
   font-family: 'Arial', sans-serif;
 }
 
-/* Basic styling for body */
 body {
   background-color: #f4f7f9;
 }
 
-/* Styling for header */
 h1 {
   text-align: center;
   margin-top: 30px;
@@ -110,17 +107,17 @@ form button:hover {
   transform: scale(1.05);
 }
 
-/* Resume container styling */
+
 #resumeContainer {
   text-align: center;
   margin: 20px auto;
-  overflow: hidden; /* Prevent horizontal scrolling within the container */
-  display: none; /* Initially hidden until the form is submitted */
+  overflow: hidden; 
+  display: none; 
 }
 
-/* Resume display styling */
+
 #resumeDisplay {
-  max-width: 100%; /* Ensure resume display does not exceed viewport width */
+  max-width: 100%;
   margin: 20px auto;
   padding: 20px;
   background: #ffffff;
@@ -129,10 +126,10 @@ form button:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   display: inline-block;
   text-align: left;
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  box-sizing: border-box; 
 }
 
-/* Resume content */
+
 #resumeDisplay h2 {
   font-size: 2em;
   color: #007bff;
@@ -153,7 +150,7 @@ form button:hover {
 /* Container for buttons */
 #buttonContainer {
   display: flex;
-  flex-direction: column; /* Stacked vertically on mobile */
+  flex-direction: column; 
   justify-content: center;
   align-items: center;
   margin-top: 20px;
@@ -170,7 +167,7 @@ form button:hover {
   transition: background-color 0.3s, transform 0.2s;
   margin: 10px;
   width: 100%;
-  max-width: calc(100% - 20px); /* Adjust to ensure buttons fit within viewport */
+  max-width: calc(100% - 20px); 
 }
 
 #downloadBtn:hover, #copyLinkBtn:hover {
@@ -181,12 +178,12 @@ form button:hover {
 /* Responsive Design */
 @media (min-width: 769px) {
   #buttonContainer {
-    flex-direction: row; /* Horizontally aligned on larger screens */
+    flex-direction: row; 
   }
 
   #downloadBtn, #copyLinkBtn {
-    width: auto; /* Let buttons take their natural width */
-    margin: 0 10px; /* Add some space between the buttons */
+    width: auto; 
+    margin: 0 10px; 
   }
 }
 
@@ -210,7 +207,7 @@ form button:hover {
   }
 
   #buttonContainer {
-    flex-direction: column; /* Stack buttons vertically on small screens */
+    flex-direction: column; 
   }
 }
 
